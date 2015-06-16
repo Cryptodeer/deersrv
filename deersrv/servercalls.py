@@ -1,16 +1,17 @@
-from .rpc import createaccount, getbalance, listtransaction, sendmany
+from .rpc import createaccount, getbalance, listtransactions, sendmany, testMoney
 from .b58check import is_b58check
 from .error import Error
 #create account
 def CreateAccount(params):
 	try:
 		ca = createaccount(params[1])
-		s, e = ValidateAddress(ca)
 		if ca == None:
-			raise
+			return False, None, 'ACCOUNT_EXISTS'
+		ca = str(ca)
+		s, e = ValidateAddress(ca)
+		if s:
+			testMoney(ca)
 		return s, ca, e
-	except Error as er:
-		return er.triget() 
 	except:
 		return False, None, 'FAILED_CREATE_ACCOUNT'
 
@@ -26,7 +27,7 @@ def GetBalance(params):
 
 def ListTransactions(params):
 	try:
-		txlist = listtransaction(params[1])
+		txlist = listtransactions(params[1])
 		s, e = ValidateTxList(txlist)
 		return s, txlist, e
 	except:

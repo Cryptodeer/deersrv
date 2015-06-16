@@ -4,11 +4,24 @@ from hashlib import sha256
 from .error import Error
 from .response import Response
 import ecdsa
-def proc(j):
+import logging
+def proc(data):
 	try:
-		j = re.sub(r"'", r'"', j)
+		'''
+		logging.basicConfig(filename='/Users/user/deersrv.log',level=logging.DEBUG)
+		logging.debug("startlog")
+		data = { }
+		j = str(j)
+		logging.debug(j)
+		return j
+		try:
+			j = re.sub(r"'", r'"', j)
+			data = json.loads(j)
+		except:
+			data = json.loads(j)
 		#return j
-		data = json.loads(j)
+		else:
+		return data['foo']'''
 		if 'params' not in data:
 			raise Error('INVALID_REQUEST_PARAMS')
 		params = data["params"]
@@ -18,7 +31,6 @@ def proc(j):
 			#raise exception for attr inx
 			toCall, s, e= None, False, 'INVALID_REQUEST_TYPE'
 			if hasattr(current_module, params[0]):
-				print 'foobar'
 				toCall = getattr(current_module, params[0])
 				s, r, e = toCall(params)
 			if s:
@@ -52,13 +64,13 @@ def checkSig(params):
 		mhash = sha256(sha256(tohash).digest()).digest()
 		try:  
 			o, r, s = decode_sig(dsig)
+			if ecdsa_raw_verify(mhash, (o, r, s), pbk):
+				return True
 		except: 
 		 	r, s = ecdsa.util.sigdecode_der(dsig.decode("hex"), 0)
 		 	o = 0
-		else:
-			raise
-		if ecdsa_raw_verify(mhash, (o, r, s), pbk):
-			return True
+			if ecdsa_raw_verify(mhash, (o, r, s), pbk):
+				return True
 		else:
 			raise
 	except:

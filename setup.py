@@ -20,6 +20,7 @@ setup(
     install_requires=[
         'ecdsa==0.11',
         'requests>=2.4.3',
+        'pybitcointools>=1.1.28',
     ],
     classifiers=[
         'Intended Audience :: Developers',

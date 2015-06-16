@@ -21,6 +21,7 @@ setup(
         'ecdsa==0.11',
         'requests>=2.4.3',
         'pybitcointools>=1.1.28',
+        'utilitybelt>=0.1.7'
     ],
     classifiers=[
         'Intended Audience :: Developers',

@@ -54,9 +54,13 @@ def checkSig(params):
 		if len(params) < 4:
 			return False
 		if params[0] != "CreateTransaction": 
+			if time.time() - params[2] > TIME_LIMITS
+				raise Error('REQUEST_TOO_OLD')
 			tohash = params[1]+str(params[2])+params[3]
 			dsig = params[4]
 		else:
+			if time.time() - params[5] > TIME_LIMITS
+				raise Error('REQUEST_TOO_OLD')
 			tohash = params[1]+params[2]+params[3]+str(params[4])+str(params[5])+params[6]
 			dsig = params[7]
 		pbkstr = str(params[1])

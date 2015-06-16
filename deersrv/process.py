@@ -23,13 +23,16 @@ def proc(j):
 					raise Response(r, e)
 				else:
 					raise Error(e)
+			except AttributeError:
+				raise
 			except:
+				raise Error('INVALID_REQUEST_TYPE')
+			else:
 				raise Error('INVALID_REQUEST_TYPE')
 	except Error as er:
 		return er.get()
 	except Response as res:
 		return res.get()
-		
 
 def checkSig(params):
 	try:

@@ -32,12 +32,11 @@ class Error():
 
 	def __init__(self, E="UNKNOW_ERROR", description=None ):
 		description = self.errors[E]['description'] if None else description
-		try:
-			self.newError = { 'error': E, 'code': self.errors[E]['code'], 'description': description }
-		except:
-			self.newError = { 'error': E, 'code': 999, 'description': description }
-		else:
-			raise
+		for k in self.errors:
+			if E == k:
+				self.newError = { 'error': E, 'code': self.errors[E]['code'], 'description': description }
+				return None
+		self.newError = { 'error': E, 'code': 999, 'description': description }
 			
 	def get(self):
 		return self.newError

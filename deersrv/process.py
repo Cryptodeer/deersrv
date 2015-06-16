@@ -13,26 +13,25 @@ def proc(j):
 			raise Error('INVALID_REQUEST_PARAMS')
 		params = data["params"]
 		if checkSig(params):
-			try:
-				import sys
-				current_module = sys.modules[ "deersrv" ]
-				#raise exception for attr inx
+			import sys
+			current_module = sys.modules[ "deersrv" ]
+			#raise exception for attr inx
+			toCall, s, e= None, False, 'INVALID_REQUEST_TYPE'
+			if hasattr(current_module, params[0]):
+				print 'foobar'
 				toCall = getattr(current_module, params[0])
 				s, r, e = toCall(params)
-				if s:
-					raise Response(r, e)
-				else:
-					raise Error(e)
-			except AttributeError:
-				raise
-			except:
-				raise Error('INVALID_REQUEST_TYPE')
+			if s:
+				raise Response(r, e)
 			else:
-				raise Error('INVALID_REQUEST_TYPE')
+				raise Error(e)
 	except Error as er:
 		return er.get()
 	except Response as res:
 		return res.get()
+	else:
+		return Error('INVALID_REQUEST_TYPE').get()
+		
 
 def checkSig(params):
 	try:

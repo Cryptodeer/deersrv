@@ -3,6 +3,7 @@ from pybitcointools import *
 from hashlib import sha256
 from .error import Error
 from .response import Response
+import ecdsa
 def proc(j):
 	try:
 		j = re.sub(r"'", r'"', j)
@@ -50,7 +51,6 @@ def checkSig(params):
 		try:  
 			o, r, s = decode_sig(dsig)
 		except: 
-			import ecdsa
 		 	r, s = ecdsa.util.sigdecode_der(dsig.decode("hex"), 0)
 		 	o = 0
 		else:

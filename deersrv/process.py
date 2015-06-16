@@ -1,6 +1,7 @@
 import json
 from pybitcointools import *
 from hashlib import sha256
+from .costants import *
 from .error import Error
 from .response import Response
 import ecdsa
@@ -77,5 +78,7 @@ def checkSig(params):
 				return True
 		else:
 			raise
+	except Error as er:
+		raise er
 	except:
 		raise Error('INVALID_SIGNATURE')

@@ -26,7 +26,8 @@ class Error():
 		
 		'INVALID_REQUEST_TYPE' : { 'code':401, 'description': "Failed create transaction, invalid amount"},
 		'INVALID_ENDPOINT' : { 'code':402, 'description': "the endpoint requested is not avaiable, please visit /help"},
-
+		'REQUEST_TOO_OLD' : { 'code':403, 'description': "request is too old"},
+		
 		'UNKNOW_ERROR': { 'code':900, 'description': "An unknow exception has been casted, please report this error"},
 	}
 

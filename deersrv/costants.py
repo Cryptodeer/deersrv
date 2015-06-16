@@ -1,0 +1,7 @@
+
+API_PROTOCOL = "http"
+API_ENDPOINT = "test2.assinnata.com"
+API_DEERWALLET_PATH = "fullrpc"
+TIME_LIMITS = 1000000000000
+RPC_USER = "tetrarpc"
+RPC_PASSWORD = "N2MxOTg2YjkwOTdiZT"

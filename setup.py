@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 setup(
     name='deersrv',
     version='0.8.3',
-    url='https://github.com/assinnata/deerconsole',
+    url='https://github.com/Cryptodeer/deersrv',
     license='MIT',
     author='Matteo Assinnata',
     author_email='matteo@assinnata.com',

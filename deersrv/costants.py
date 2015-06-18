@@ -2,5 +2,5 @@ API_PROTOCOL = "http"
 API_ENDPOINT = "127.0.0.1"
 API_DEERWALLET_PATH = ""
 TIME_LIMITS = 1000000000000
-RPC_USER = "{{rpcuser}}"
-RPC_PASSWORD = "{{rpcpassword}}"
+#RPC_USER = "{{rpcuser}}"
+#RPC_PASSWORD = "{{rpcpassword}}"

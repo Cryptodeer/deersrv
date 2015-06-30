@@ -24,9 +24,9 @@ class Error():
 		'FAILED_CREATE_TRANSACTION_CIRCUIT' : { 'code':344, 'description': "Failed create transaction, invalid circuit"},
 		'FAILED_CREATE_TRANSACTION_AMOUNT' : { 'code':345, 'description': "Failed create transaction, invalid amount"},
 		
-		'INVALID_REQUEST_TYPE' : { 'code':401, 'description': "Failed create transaction, invalid amount"},
 		'INVALID_ENDPOINT' : { 'code':402, 'description': "the endpoint requested is not avaiable, please visit /help"},
 		'REQUEST_TOO_OLD' : { 'code':403, 'description': "request is too old"},
+		'INVALID_REQUEST_TYPE' : { 'code':404, 'description': "Invalid request type"},
 		
 		'UNKNOW_ERROR': { 'code':900, 'description': "An unknow exception has been casted, please report this error"},
 	}
